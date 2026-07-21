@@ -23,3 +23,9 @@ Sube directamente todos los archivos que están dentro de esta carpeta. No subas
 - El timbre dejó de mostrarse en las órdenes y PDF.
 - Se corrigió la firma con fondo transparente.
 - Se actualizó la caché de la PWA para reflejar los cambios.
+
+
+## Versión 4.1 — Impresión corregida
+- Se corrigió la impresión en blanco desde la vista previa.
+- La orden se imprime en formato A4.
+- Se conserva la firma encima del nombre y no se muestra el timbre.

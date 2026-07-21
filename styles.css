@@ -8,7 +8,71 @@ button{border:0;border-radius:12px;padding:12px 15px;font-weight:750;font:inheri
 .tabs{display:flex;padding:6px;margin-bottom:12px;gap:6px;position:sticky;top:8px;z-index:5}.tab{flex:1;background:transparent;color:var(--muted)}.tab.active{background:#e6fffb;color:#115e59}.view{min-height:420px}.quick-box{background:#f0fdfa;border:1px dashed #5eead4;border-radius:14px;padding:14px;margin:18px 0}.items-list{display:grid;gap:9px}.item-row{display:flex;gap:8px}.item-row input{flex:1}.remove-item{width:44px;background:#fff1f0;color:var(--danger);font-size:1.2rem}.actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.section-head{display:flex;justify-content:space-between;align-items:center}.danger-link{background:transparent;color:var(--danger);padding:0}.history-list{display:grid;gap:12px}.history-card{border:1px solid var(--line);border-radius:14px;padding:14px}.history-card h3{margin:0 0 4px;font-size:1rem}.history-meta{color:var(--muted);font-size:.82rem}.history-actions{display:flex;gap:8px;margin-top:10px}.history-actions button{padding:8px 10px;font-size:.84rem}
 dialog{border:0;border-radius:18px;padding:0;max-width:850px;width:calc(100% - 24px);box-shadow:0 30px 80px rgba(0,0,0,.25)}dialog::backdrop{background:rgba(7,21,20,.55)}.dialog-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}.icon-btn{background:transparent;font-size:1.6rem;padding:2px 8px}.dialog-actions{padding:14px 18px;border-top:1px solid var(--line);display:flex;justify-content:flex-end}.order-sheet{padding:34px;background:white;min-height:700px}.order-header{display:flex;justify-content:space-between;border-bottom:2px solid #0f766e;padding-bottom:14px}.order-title{font-size:1.5rem;font-weight:800;color:#0f766e}.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin:20px 0}.order-block{margin:20px 0}.order-block h4{margin:0 0 8px;color:#0f766e}.order-footer{margin-top:50px;display:flex;justify-content:space-between;align-items:flex-end}.signature{font-family:inherit;font-size:1rem}.verify{font-size:.78rem;color:#64748b;text-align:right}
 @media(max-width:640px){.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.panel{padding:17px}.topbar{padding-top:18px}.tabs{top:4px}.tab{font-size:.82rem;padding:10px 6px}.actions{flex-direction:column-reverse}.actions button{width:100%}.order-sheet{padding:20px}.order-grid{grid-template-columns:1fr}.order-footer{gap:20px}}
-@media print{body *{visibility:hidden}#printArea,#printArea *{visibility:visible}#printArea{position:absolute;left:0;top:0;width:100%;padding:25mm;box-shadow:none}.dialog-actions,.dialog-head{display:none!important}}
+@media print{
+  @page{size:A4;margin:12mm}
+  html,body{
+    width:100%;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    background:#fff!important;
+  }
+  body:before,
+  .topbar,
+  main > .tabs,
+  main > section,
+  .dialog-head,
+  .dialog-actions{
+    display:none!important;
+  }
+  body *{
+    visibility:hidden!important;
+  }
+  #previewDialog,
+  #previewDialog[open]{
+    display:block!important;
+    visibility:visible!important;
+    position:static!important;
+    inset:auto!important;
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+    background:#fff!important;
+  }
+  #previewDialog::backdrop{display:none!important}
+  #printArea,
+  #printArea *{
+    visibility:visible!important;
+  }
+  #printArea{
+    display:block!important;
+    position:static!important;
+    width:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+    background:#fff!important;
+  }
+  .order-sheet{
+    display:block!important;
+    width:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    box-shadow:none!important;
+    break-inside:avoid;
+  }
+}
 
 
 /* Firma y timbre digitalizados */
