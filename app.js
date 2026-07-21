@@ -74,8 +74,7 @@ function renderOrder(o){return `
  ${o.preparation?`<div class="order-block"><h4>Preparación e indicaciones</h4><p>${escapeHtml(o.preparation)}</p></div>`:''}
  <div class="order-footer"><div class="doctor-auth">
    <div class="doctor-marks">
-    <img class="digital-signature" src="${o.doctor.signatureImage||'firma-jeronimo.png'}" alt="Firma digitalizada">
-    <img class="medical-stamp" src="${o.doctor.stampImage||'timbre-jeronimo.png'}" alt="Timbre médico">
+    <img class="digital-signature" src="${o.doctor.signatureImage||'firma-jeronimo.png'}" alt="Firma digitalizada del médico">
    </div>
    <div class="doctor-card-name">Dr. ${escapeHtml(o.doctor.name.replace(/^Dr\.\s*/i,''))}</div>
    <div class="doctor-card-specialty">${escapeHtml(o.doctor.specialty)}</div>

@@ -86,3 +86,42 @@ dialog{border:0;border-radius:18px;padding:0;max-width:850px;width:calc(100% - 2
  .doctor-card-specialty{font-size:12px}
  .doctor-card-meta{font-size:10px}
 }
+
+
+/* IndicaMed v4: solo firma sobre el nombre */
+.doctor-marks{
+  display:block;
+  margin:0 0 4px 0;
+  min-height:76px;
+}
+
+.digital-signature{
+  display:block;
+  width:250px;
+  max-width:100%;
+  height:auto;
+  max-height:105px;
+  object-fit:contain;
+  object-position:left bottom;
+  margin:0 0 -4px 0;
+  mix-blend-mode:normal;
+}
+
+.medical-stamp{
+  display:none !important;
+}
+
+@media(max-width:640px){
+  .digital-signature{
+    width:220px;
+    max-height:92px;
+  }
+}
+
+@media print{
+  .digital-signature{
+    width:55mm;
+    max-height:23mm;
+    margin-bottom:-1mm;
+  }
+}

@@ -18,8 +18,8 @@ Esta versión guarda todo únicamente en el dispositivo mediante almacenamiento 
 Sube directamente todos los archivos que están dentro de esta carpeta. No subas el ZIP.
 
 
-## Versión 3
-- Firma digitalizada sobre los datos del profesional.
-- Timbre médico corregido.
-- Firma y timbre reemplazables desde el perfil.
-- Tipografía profesional uniforme y nombre sin duplicar.
+## Versión 4 — Solo firma
+- La firma digital aparece encima del nombre del profesional.
+- El timbre dejó de mostrarse en las órdenes y PDF.
+- Se corrigió la firma con fondo transparente.
+- Se actualizó la caché de la PWA para reflejar los cambios.
