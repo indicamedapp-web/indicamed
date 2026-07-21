@@ -14,7 +14,7 @@ function showWorkspace(){
  $('#onboarding').classList.add('hidden');$('#workspace').classList.remove('hidden');renderProfile();renderHistory();if(!$('#itemsList').children.length)addItem()
 }
 function showOnboarding(){
- $('#workspace').classList.add('hidden');$('#onboarding').classList.remove('hidden');if(doctor){$('#doctorName').value=doctor.name||'';$('#doctorSpecialty').value=doctor.specialty||'';$('#doctorRut').value=doctor.rut||'';$('#doctorRegistry').value=doctor.registry||'';$('#doctorCenter').value=doctor.center||'';$('#doctorEmail').value=doctor.email||'';$('#doctorPhone').value=doctor.phone||'';$('#doctorAddress').value=doctor.address||'';$('#signaturePreview').src=doctor.signatureImage||'firma-jeronimo.png';$('#stampPreview').src=doctor.stampImage||'timbre-jeronimo.png';if(doctor.logo){$('#logoPreview').src=doctor.logo;$('#logoPreviewWrap').classList.remove('hidden')}}
+ $('#workspace').classList.add('hidden');$('#onboarding').classList.remove('hidden');if(doctor){$('#doctorName').value=doctor.name||'';$('#doctorSpecialty').value=doctor.specialty||'';$('#doctorRut').value=doctor.rut||'';$('#doctorRegistry').value=doctor.registry||'';$('#doctorCenter').value=doctor.center||'';$('#doctorEmail').value=doctor.email||'';$('#doctorPhone').value=doctor.phone||'';$('#doctorAddress').value=doctor.address||'';if(doctor.logo){$('#logoPreview').src=doctor.logo;$('#logoPreviewWrap').classList.remove('hidden')}}
 }
 
 
@@ -26,21 +26,11 @@ $('#doctorLogo').addEventListener('change',async e=>{
  if(file.size>1_500_000){alert('El logo debe pesar menos de 1,5 MB.');e.target.value='';return}
  const data=await fileToDataUrl(file);$('#logoPreview').src=data;$('#logoPreviewWrap').classList.remove('hidden')
 });
-async function previewMedicalAsset(inputSelector,previewSelector){
- const file=$(inputSelector).files?.[0];if(!file)return '';
- if(file.size>1_500_000){alert('La imagen debe pesar menos de 1,5 MB.');$(inputSelector).value='';return ''}
- const data=await fileToDataUrl(file);$(previewSelector).src=data;return data
-}
-$('#doctorSignatureImage').addEventListener('change',()=>previewMedicalAsset('#doctorSignatureImage','#signaturePreview'));
-$('#doctorStampImage').addEventListener('change',()=>previewMedicalAsset('#doctorStampImage','#stampPreview'));
 $('#doctorForm').addEventListener('submit',async e=>{
  e.preventDefault();
  const file=$('#doctorLogo').files?.[0];
- const signatureFile=$('#doctorSignatureImage').files?.[0];
- const stampFile=$('#doctorStampImage').files?.[0];
  const logo=file?await fileToDataUrl(file):(doctor?.logo||'');
- const signatureImage=signatureFile?await fileToDataUrl(signatureFile):(doctor?.signatureImage||'firma-jeronimo.png');
- const stampImage=stampFile?await fileToDataUrl(stampFile):(doctor?.stampImage||'timbre-jeronimo.png');
+ const signatureImage=doctor?.signatureImage||'firma-jeronimo.png';
  doctor={
   name:$('#doctorName').value.trim(),
   specialty:$('#doctorSpecialty').value.trim(),
@@ -51,8 +41,7 @@ $('#doctorForm').addEventListener('submit',async e=>{
   phone:$('#doctorPhone').value.trim(),
   address:$('#doctorAddress').value.trim(),
   logo,
-  signatureImage,
-  stampImage
+  signatureImage
  };
  store.set('doctor',doctor);showWorkspace()
 });

@@ -1,5 +1,5 @@
-const CACHE='indicamed-v4.1';
-const ASSETS=['./','./index.html','./styles.css?v=4.1','./app.js?v=4.1','./manifest.webmanifest','./icon.svg','./firma-jeronimo.png'];
+const CACHE='indicamed-v4.2';
+const ASSETS=['./','./index.html','./styles.css?v=4.2','./app.js?v=4.2','./manifest.webmanifest','./icon.svg','./firma-jeronimo.png'];
 
 self.addEventListener('install', event => {
   self.skipWaiting();

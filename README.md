@@ -29,3 +29,9 @@ Sube directamente todos los archivos que están dentro de esta carpeta. No subas
 - Se corrigió la impresión en blanco desde la vista previa.
 - La orden se imprime en formato A4.
 - Se conserva la firma encima del nombre y no se muestra el timbre.
+
+
+## Versión 4.2 — Botón Guardar corregido
+- Se eliminaron referencias a campos de firma y timbre que ya no existen.
+- El botón “Guardar y continuar” vuelve a funcionar.
+- Se conserva la firma fija encima del nombre del médico.
