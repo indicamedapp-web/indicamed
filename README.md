@@ -35,3 +35,16 @@ Sube directamente todos los archivos que están dentro de esta carpeta. No subas
 - Se eliminaron referencias a campos de firma y timbre que ya no existen.
 - El botón “Guardar y continuar” vuelve a funcionar.
 - Se conserva la firma fija encima del nombre del médico.
+
+
+## Versión 5.0 — Diseño clínico institucional
+
+- Nueva orden médica con apariencia institucional y formato A4.
+- Encabezado sobrio con logo de IndicaMed o logo de consulta.
+- Datos del paciente organizados en una ficha clínica.
+- Exámenes y procedimientos presentados con casillas.
+- Observaciones y preparación en bloques diferenciados.
+- Firma digitalizada sobre los datos profesionales.
+- Sin fotografía del médico y sin timbre.
+- Pie de verificación y número de orden.
+- Se mantienen las funciones ya existentes.

@@ -189,3 +189,450 @@ dialog{border:0;border-radius:18px;padding:0;max-width:850px;width:calc(100% - 2
     margin-bottom:-1mm;
   }
 }
+
+
+/* =========================================================
+   IndicaMed v5 — Diseño clínico institucional
+   Sin fotografía del médico. Solo firma y datos profesionales.
+   ========================================================= */
+
+.order-sheet{
+  padding:28px;
+  background:#eef3f3;
+}
+
+.clinical-order{
+  --clinical-ink:#183435;
+  --clinical-muted:#607374;
+  --clinical-green:#0f766e;
+  --clinical-green-dark:#0a5b55;
+  --clinical-soft:#f2f8f7;
+  --clinical-line:#d7e2e1;
+  position:relative;
+  width:100%;
+  max-width:794px;
+  min-height:1040px;
+  margin:0 auto;
+  padding:42px 46px 30px;
+  background:#fff;
+  color:var(--clinical-ink);
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  box-shadow:0 14px 38px rgba(25,55,55,.12);
+}
+
+.clinical-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:28px;
+}
+
+.clinical-brand{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+}
+
+.clinical-logo{
+  display:block;
+  max-width:190px;
+  max-height:68px;
+  object-fit:contain;
+  object-position:left center;
+}
+
+.indicamed-mark{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.indicamed-symbol{
+  display:grid;
+  place-items:center;
+  width:43px;
+  height:43px;
+  border-radius:11px;
+  background:var(--clinical-green);
+  color:#fff;
+  font-size:28px;
+  font-weight:500;
+  line-height:1;
+}
+
+.indicamed-mark strong{
+  display:block;
+  color:var(--clinical-green-dark);
+  font-size:22px;
+  line-height:1.05;
+  letter-spacing:-.3px;
+}
+
+.indicamed-mark small{
+  display:block;
+  margin-top:4px;
+  color:var(--clinical-muted);
+  font-size:10px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+}
+
+.clinical-document-meta{
+  min-width:220px;
+  text-align:right;
+  font-size:11px;
+  color:var(--clinical-muted);
+}
+
+.clinical-document-meta .document-type{
+  margin-bottom:14px;
+  color:var(--clinical-green-dark);
+  font-size:17px;
+  font-weight:800;
+  letter-spacing:1.7px;
+}
+
+.clinical-document-meta > div:not(.document-type){
+  display:grid;
+  grid-template-columns:1fr;
+  margin-top:6px;
+}
+
+.clinical-document-meta span{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+
+.clinical-document-meta strong{
+  margin-top:1px;
+  color:var(--clinical-ink);
+  font-size:11px;
+  font-weight:700;
+}
+
+.clinical-accent{
+  height:3px;
+  margin:20px 0 24px;
+  background:linear-gradient(90deg,var(--clinical-green) 0 70%,#b9d8d4 70% 100%);
+}
+
+.clinical-section{
+  margin:0 0 24px;
+}
+
+.clinical-section h3,
+.clinical-note-box h3,
+.clinical-preparation-box h3{
+  margin:0 0 11px;
+  color:var(--clinical-green-dark);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.25px;
+}
+
+.patient-data-grid{
+  display:grid;
+  grid-template-columns:1.35fr .85fr .7fr;
+  border:1px solid var(--clinical-line);
+  border-radius:4px;
+  overflow:hidden;
+}
+
+.data-field{
+  min-height:58px;
+  padding:11px 13px 9px;
+  border-right:1px solid var(--clinical-line);
+  border-bottom:1px solid var(--clinical-line);
+  background:#fff;
+}
+
+.data-field:nth-child(3){
+  border-right:0;
+}
+
+.data-field.data-wide{
+  grid-column:auto;
+}
+
+.data-field.data-full{
+  grid-column:1/-1;
+  border-right:0;
+  border-bottom:0;
+}
+
+.data-field span{
+  display:block;
+  margin-bottom:5px;
+  color:var(--clinical-muted);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.55px;
+}
+
+.data-field strong{
+  display:block;
+  color:var(--clinical-ink);
+  font-size:12.5px;
+  line-height:1.35;
+  font-weight:650;
+}
+
+.requested-section{
+  min-height:210px;
+  padding-top:2px;
+}
+
+.requested-list{
+  border-top:1px solid var(--clinical-line);
+}
+
+.requested-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  min-height:43px;
+  padding:11px 6px;
+  border-bottom:1px solid var(--clinical-line);
+  color:#172f31;
+  font-size:13px;
+  line-height:1.45;
+}
+
+.medical-checkbox{
+  flex:0 0 13px;
+  width:13px;
+  height:13px;
+  margin-top:2px;
+  border:1.5px solid var(--clinical-green);
+  border-radius:2px;
+}
+
+.clinical-note-box,
+.clinical-preparation-box{
+  margin:18px 0 0;
+  padding:14px 16px;
+  border-left:3px solid var(--clinical-green);
+  background:var(--clinical-soft);
+  break-inside:avoid;
+}
+
+.clinical-preparation-box{
+  border-left-color:#8aa9a6;
+  background:#f7f9f9;
+}
+
+.clinical-note-box p,
+.clinical-preparation-box p{
+  margin:0;
+  color:#263f40;
+  font-size:12px;
+  line-height:1.55;
+  white-space:pre-line;
+}
+
+.clinical-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:36px;
+  margin-top:54px;
+  padding-top:18px;
+  border-top:1px solid var(--clinical-line);
+  break-inside:avoid;
+}
+
+.doctor-auth{
+  min-width:340px;
+  max-width:440px;
+}
+
+.doctor-marks{
+  min-height:68px;
+  margin:0;
+  display:flex;
+  align-items:flex-end;
+}
+
+.digital-signature{
+  display:block;
+  width:225px;
+  max-width:100%;
+  max-height:88px;
+  margin:0 0 -4px;
+  object-fit:contain;
+  object-position:left bottom;
+  mix-blend-mode:multiply;
+}
+
+.signature-rule{
+  width:265px;
+  max-width:100%;
+  height:1px;
+  margin-bottom:8px;
+  background:#94aaa8;
+}
+
+.doctor-card-name{
+  margin:0;
+  color:#143335;
+  font-size:16px;
+  line-height:1.3;
+  font-weight:750;
+}
+
+.doctor-card-specialty{
+  margin:2px 0 7px;
+  color:var(--clinical-green-dark);
+  font-size:12px;
+  font-weight:700;
+}
+
+.doctor-card-meta{
+  color:#556a6b;
+  font-size:9.5px;
+  line-height:1.55;
+}
+
+.clinical-verification{
+  max-width:220px;
+  color:#6a7c7d;
+  font-size:8.8px;
+  line-height:1.55;
+  text-align:right;
+}
+
+.verification-label{
+  margin-bottom:5px;
+  color:#385758;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.65px;
+}
+
+.powered-by{
+  margin-top:11px;
+  color:#6e8283;
+}
+
+.powered-by strong{
+  color:var(--clinical-green-dark);
+}
+
+@media(max-width:640px){
+  .order-sheet{padding:10px}
+  .clinical-order{
+    min-height:0;
+    padding:25px 20px;
+  }
+  .clinical-header{
+    flex-direction:column;
+    gap:14px;
+  }
+  .clinical-document-meta{
+    min-width:0;
+    width:100%;
+    text-align:left;
+  }
+  .clinical-document-meta > div:not(.document-type){
+    display:inline-grid;
+    margin-right:20px;
+  }
+  .patient-data-grid{
+    grid-template-columns:1fr;
+  }
+  .data-field,
+  .data-field:nth-child(3){
+    border-right:0;
+  }
+  .data-field.data-full{
+    grid-column:auto;
+  }
+  .clinical-footer{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .doctor-auth{min-width:0}
+  .clinical-verification{text-align:left}
+}
+
+@media print{
+  @page{size:A4;margin:0}
+  html,body{
+    width:210mm!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    background:#fff!important;
+  }
+  body *{
+    visibility:hidden!important;
+  }
+  #previewDialog,
+  #previewDialog[open]{
+    display:block!important;
+    visibility:visible!important;
+    position:static!important;
+    width:210mm!important;
+    max-width:none!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+    background:#fff!important;
+  }
+  #previewDialog::backdrop,
+  .dialog-head,
+  .dialog-actions{
+    display:none!important;
+  }
+  #printArea,
+  #printArea *,
+  .clinical-order,
+  .clinical-order *{
+    visibility:visible!important;
+  }
+  #printArea,
+  .order-sheet{
+    display:block!important;
+    width:210mm!important;
+    min-height:297mm!important;
+    margin:0!important;
+    padding:0!important;
+    background:#fff!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+  }
+  .clinical-order{
+    width:210mm!important;
+    max-width:none!important;
+    min-height:297mm!important;
+    margin:0!important;
+    padding:14mm 16mm 10mm!important;
+    box-shadow:none!important;
+  }
+  .clinical-header{gap:10mm}
+  .clinical-logo{max-width:48mm;max-height:18mm}
+  .clinical-accent{margin:5mm 0 6mm}
+  .clinical-section{margin-bottom:6mm}
+  .patient-data-grid{break-inside:avoid}
+  .requested-section{min-height:55mm}
+  .requested-item{min-height:11mm;padding:3mm 1.5mm;font-size:10pt}
+  .clinical-note-box,
+  .clinical-preparation-box{margin-top:4mm;padding:3.5mm 4mm}
+  .clinical-footer{
+    margin-top:12mm;
+    padding-top:4mm;
+  }
+  .doctor-marks{min-height:18mm}
+  .digital-signature{width:52mm;max-height:21mm}
+  .signature-rule{width:62mm}
+  .doctor-card-name{font-size:11pt}
+  .doctor-card-specialty{font-size:9pt}
+  .doctor-card-meta{font-size:7.5pt}
+  .clinical-verification{font-size:7pt}
+}
