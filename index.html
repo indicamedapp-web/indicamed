@@ -34,7 +34,20 @@
           <label>Dirección de consulta<input id="doctorAddress" placeholder="Opcional" /></label>
           <label class="full">Logo de la consulta (opcional)<input id="doctorLogo" type="file" accept="image/png,image/jpeg,image/webp" /></label>
           <div id="logoPreviewWrap" class="full hidden"><img id="logoPreview" alt="Vista previa del logo" style="max-height:80px;max-width:220px;object-fit:contain;border:1px solid #d8e0e8;border-radius:12px;padding:8px;background:white"></div>
-          <label class="full">Firma (nombre o rúbrica)<input id="doctorSignature" required placeholder="Escribe cómo deseas que aparezca la firma" /></label>
+          <label class="full">Firma digitalizada
+            <input id="doctorSignatureImage" type="file" accept="image/png,image/jpeg,image/webp" />
+          </label>
+          <div id="signaturePreviewWrap" class="asset-preview full">
+            <span>Vista previa de la firma</span>
+            <img id="signaturePreview" src="firma-jeronimo.png" alt="Firma digitalizada del profesional" />
+          </div>
+          <label class="full">Timbre médico
+            <input id="doctorStampImage" type="file" accept="image/png,image/jpeg,image/webp" />
+          </label>
+          <div id="stampPreviewWrap" class="asset-preview full">
+            <span>Vista previa del timbre</span>
+            <img id="stampPreview" src="timbre-jeronimo.png" alt="Timbre médico del profesional" />
+          </div>
           <button class="primary full" type="submit">Guardar y continuar</button>
         </form>
       </section>

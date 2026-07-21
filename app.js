@@ -14,7 +14,7 @@ function showWorkspace(){
  $('#onboarding').classList.add('hidden');$('#workspace').classList.remove('hidden');renderProfile();renderHistory();if(!$('#itemsList').children.length)addItem()
 }
 function showOnboarding(){
- $('#workspace').classList.add('hidden');$('#onboarding').classList.remove('hidden');if(doctor){$('#doctorName').value=doctor.name||'';$('#doctorSpecialty').value=doctor.specialty||'';$('#doctorRut').value=doctor.rut||'';$('#doctorRegistry').value=doctor.registry||'';$('#doctorCenter').value=doctor.center||'';$('#doctorEmail').value=doctor.email||'';$('#doctorPhone').value=doctor.phone||'';$('#doctorAddress').value=doctor.address||'';$('#doctorSignature').value=doctor.signature||'';if(doctor.logo){$('#logoPreview').src=doctor.logo;$('#logoPreviewWrap').classList.remove('hidden')}}
+ $('#workspace').classList.add('hidden');$('#onboarding').classList.remove('hidden');if(doctor){$('#doctorName').value=doctor.name||'';$('#doctorSpecialty').value=doctor.specialty||'';$('#doctorRut').value=doctor.rut||'';$('#doctorRegistry').value=doctor.registry||'';$('#doctorCenter').value=doctor.center||'';$('#doctorEmail').value=doctor.email||'';$('#doctorPhone').value=doctor.phone||'';$('#doctorAddress').value=doctor.address||'';$('#signaturePreview').src=doctor.signatureImage||'firma-jeronimo.png';$('#stampPreview').src=doctor.stampImage||'timbre-jeronimo.png';if(doctor.logo){$('#logoPreview').src=doctor.logo;$('#logoPreviewWrap').classList.remove('hidden')}}
 }
 
 
@@ -26,10 +26,21 @@ $('#doctorLogo').addEventListener('change',async e=>{
  if(file.size>1_500_000){alert('El logo debe pesar menos de 1,5 MB.');e.target.value='';return}
  const data=await fileToDataUrl(file);$('#logoPreview').src=data;$('#logoPreviewWrap').classList.remove('hidden')
 });
+async function previewMedicalAsset(inputSelector,previewSelector){
+ const file=$(inputSelector).files?.[0];if(!file)return '';
+ if(file.size>1_500_000){alert('La imagen debe pesar menos de 1,5 MB.');$(inputSelector).value='';return ''}
+ const data=await fileToDataUrl(file);$(previewSelector).src=data;return data
+}
+$('#doctorSignatureImage').addEventListener('change',()=>previewMedicalAsset('#doctorSignatureImage','#signaturePreview'));
+$('#doctorStampImage').addEventListener('change',()=>previewMedicalAsset('#doctorStampImage','#stampPreview'));
 $('#doctorForm').addEventListener('submit',async e=>{
  e.preventDefault();
  const file=$('#doctorLogo').files?.[0];
+ const signatureFile=$('#doctorSignatureImage').files?.[0];
+ const stampFile=$('#doctorStampImage').files?.[0];
  const logo=file?await fileToDataUrl(file):(doctor?.logo||'');
+ const signatureImage=signatureFile?await fileToDataUrl(signatureFile):(doctor?.signatureImage||'firma-jeronimo.png');
+ const stampImage=stampFile?await fileToDataUrl(stampFile):(doctor?.stampImage||'timbre-jeronimo.png');
  doctor={
   name:$('#doctorName').value.trim(),
   specialty:$('#doctorSpecialty').value.trim(),
@@ -40,7 +51,8 @@ $('#doctorForm').addEventListener('submit',async e=>{
   phone:$('#doctorPhone').value.trim(),
   address:$('#doctorAddress').value.trim(),
   logo,
-  signature:$('#doctorSignature').value.trim()
+  signatureImage,
+  stampImage
  };
  store.set('doctor',doctor);showWorkspace()
 });
@@ -60,7 +72,21 @@ function renderOrder(o){return `
  <div class="order-block"><h4>Exámenes o procedimientos solicitados</h4><ol>${o.items.map(x=>`<li>${escapeHtml(x)}</li>`).join('')}</ol></div>
  ${o.clinicalNote?`<div class="order-block"><h4>Observación clínica</h4><p>${escapeHtml(o.clinicalNote)}</p></div>`:''}
  ${o.preparation?`<div class="order-block"><h4>Preparación e indicaciones</h4><p>${escapeHtml(o.preparation)}</p></div>`:''}
- <div class="order-footer"><div><div class="signature">${escapeHtml(o.doctor.signature)}</div><strong>${escapeHtml(o.doctor.name)}</strong><br>${escapeHtml(o.doctor.specialty)}<br>RUT: ${escapeHtml(o.doctor.rut)}${o.doctor.registry?`<br>Registro SIS: ${escapeHtml(o.doctor.registry)}`:''}${o.doctor.email?`<br>${escapeHtml(o.doctor.email)}`:''}${o.doctor.phone?`<br>${escapeHtml(o.doctor.phone)}`:''}${o.doctor.address?`<br>${escapeHtml(o.doctor.address)}`:''}</div><div class="verify">Documento verificable<br>Código: ${escapeHtml(o.id)}<br>Estado: ${escapeHtml(o.status)}</div></div>`}
+ <div class="order-footer"><div class="doctor-auth">
+   <div class="doctor-marks">
+    <img class="digital-signature" src="${o.doctor.signatureImage||'firma-jeronimo.png'}" alt="Firma digitalizada">
+    <img class="medical-stamp" src="${o.doctor.stampImage||'timbre-jeronimo.png'}" alt="Timbre médico">
+   </div>
+   <div class="doctor-card-name">Dr. ${escapeHtml(o.doctor.name.replace(/^Dr\.\s*/i,''))}</div>
+   <div class="doctor-card-specialty">${escapeHtml(o.doctor.specialty)}</div>
+   <div class="doctor-card-meta">
+    <div><strong>RUT:</strong> ${escapeHtml(o.doctor.rut)}</div>
+    ${o.doctor.registry?`<div><strong>Registro SIS Nº:</strong> ${escapeHtml(o.doctor.registry)}</div>`:''}
+    ${o.doctor.email?`<div>${escapeHtml(o.doctor.email)}</div>`:''}
+    ${o.doctor.phone?`<div>${escapeHtml(o.doctor.phone)}</div>`:''}
+    ${o.doctor.address?`<div>${escapeHtml(o.doctor.address)}</div>`:''}
+   </div>
+  </div><div class="verify">Documento verificable<br>Código: ${escapeHtml(o.id)}<br>Estado: ${escapeHtml(o.status)}</div></div>`}
 
 $('#previewBtn').onclick=()=>{try{const o=collectOrder();$('#printArea').innerHTML=renderOrder(o);$('#previewDialog').showModal()}catch(err){alert(err.message)}};
 $('#closePreview').onclick=()=>$('#previewDialog').close();$('#printBtn').onclick=()=>window.print();
