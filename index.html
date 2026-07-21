@@ -7,7 +7,7 @@
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <title>IndicaMed</title>
-  <link rel="stylesheet" href="styles.css?v=5.0" />
+  <link rel="stylesheet" href="styles.css?v=6.0" />
 </head>
 <body>
   <div id="app">
@@ -16,10 +16,63 @@
         <div class="brand">IndicaMed</div>
         <div class="subtitle">Indicaciones médicas desde cualquier lugar</div>
       </div>
-      <button id="installBtn" class="ghost hidden">Instalar</button>
+      <div class="account-actions">
+        <span id="sessionEmail" class="session-email hidden"></span>
+        <button id="logoutBtn" class="ghost hidden" type="button">Cerrar sesión</button>
+        <button id="installBtn" class="ghost hidden" type="button">Instalar</button>
+      </div>
     </header>
 
     <main>
+
+      <section id="authScreen" class="auth-shell">
+        <div class="auth-card card">
+          <div class="auth-brand">
+            <div class="auth-symbol">+</div>
+            <div>
+              <h1>IndicaMed</h1>
+              <p>Órdenes médicas seguras y disponibles en todos tus dispositivos.</p>
+            </div>
+          </div>
+
+          <div id="cloudConfigWarning" class="config-warning hidden">
+            <strong>Falta conectar la base de datos.</strong>
+            <span>Completa el archivo <code>config.js</code> con las claves de Supabase.</span>
+          </div>
+
+          <div class="auth-tabs" role="tablist">
+            <button id="showLoginBtn" class="auth-tab active" type="button">Iniciar sesión</button>
+            <button id="showSignupBtn" class="auth-tab" type="button">Crear cuenta</button>
+          </div>
+
+          <form id="loginForm" class="auth-form">
+            <label>Correo electrónico
+              <input id="loginEmail" type="email" autocomplete="email" required placeholder="medico@correo.cl">
+            </label>
+            <label>Contraseña
+              <input id="loginPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="Mínimo 6 caracteres">
+            </label>
+            <button class="primary wide" type="submit">Ingresar</button>
+          </form>
+
+          <form id="signupForm" class="auth-form hidden">
+            <label>Correo electrónico
+              <input id="signupEmail" type="email" autocomplete="email" required placeholder="medico@correo.cl">
+            </label>
+            <label>Crear contraseña
+              <input id="signupPassword" type="password" autocomplete="new-password" minlength="6" required placeholder="Mínimo 6 caracteres">
+            </label>
+            <label>Repetir contraseña
+              <input id="signupPassword2" type="password" autocomplete="new-password" minlength="6" required placeholder="Repite la contraseña">
+            </label>
+            <button class="primary wide" type="submit">Crear cuenta</button>
+          </form>
+
+          <p id="authMessage" class="auth-message" aria-live="polite"></p>
+          <p class="auth-footnote">Cada cuenta conserva de forma privada su perfil médico y sus órdenes.</p>
+        </div>
+      </section>
+
       <section id="onboarding" class="card panel">
         <h1>Configura tu perfil médico</h1>
         <p class="muted">Estos datos aparecerán en las órdenes emitidas.</p>
@@ -109,6 +162,8 @@
     </div>
   </template>
 
-  <script src="app.js?v=5.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js?v=6.0"></script>
+  <script src="app.js?v=6.0"></script>
 </body>
 </html>

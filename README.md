@@ -48,3 +48,13 @@ Sube directamente todos los archivos que están dentro de esta carpeta. No subas
 - Sin fotografía del médico y sin timbre.
 - Pie de verificación y número de orden.
 - Se mantienen las funciones ya existentes.
+
+
+## Versión 6.0 — Cuentas y almacenamiento en la nube
+
+- Registro con correo y contraseña.
+- Inicio y cierre de sesión.
+- Perfil e historial sincronizados entre dispositivos.
+- Datos separados por cuenta mediante Row Level Security.
+- Preparado para dos o más médicos.
+- Requiere crear un proyecto gratuito en Supabase y completar `config.js`.

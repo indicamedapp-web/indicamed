@@ -636,3 +636,34 @@ dialog{border:0;border-radius:18px;padding:0;max-width:850px;width:calc(100% - 2
   .doctor-card-meta{font-size:7.5pt}
   .clinical-verification{font-size:7pt}
 }
+
+
+/* IndicaMed v6 — autenticación y almacenamiento en nube */
+.account-actions{display:flex;align-items:center;gap:10px}
+.session-email{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:#52696a}
+.auth-shell{min-height:calc(100vh - 110px);display:grid;place-items:center;padding:28px 16px}
+.auth-card{width:min(100%,460px);padding:30px}
+.auth-brand{display:flex;gap:15px;align-items:center;margin-bottom:24px}
+.auth-brand h1{margin:0;color:#0a5b55;font-size:27px}
+.auth-brand p{margin:5px 0 0;color:#627778;font-size:13px;line-height:1.45}
+.auth-symbol{display:grid;place-items:center;flex:0 0 52px;width:52px;height:52px;border-radius:14px;background:#0f766e;color:white;font-size:34px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;margin-bottom:20px;border-bottom:1px solid #d8e3e2}
+.auth-tab{border:0;background:transparent;padding:11px;color:#718282;font-weight:700;cursor:pointer;border-bottom:2px solid transparent}
+.auth-tab.active{color:#0a5b55;border-bottom-color:#0f766e}
+.auth-form{display:grid;gap:15px}
+.auth-form label{display:grid;gap:6px;font-size:12px;font-weight:700;color:#324c4d}
+.auth-message{min-height:20px;margin:16px 0 0;text-align:center;font-size:12px}
+.auth-message.error{color:#b42318}.auth-message.success{color:#16794b}
+.auth-footnote{margin:16px 0 0;text-align:center;color:#7a8d8e;font-size:11px;line-height:1.4}
+.config-warning{display:grid;gap:4px;margin:0 0 18px;padding:12px 14px;border:1px solid #efc65f;border-radius:10px;background:#fff8df;color:#74551c;font-size:12px}
+.config-warning code{font-size:11px}
+button:disabled{opacity:.55;cursor:wait}
+@media(max-width:640px){
+ .topbar{align-items:flex-start}
+ .account-actions{flex-wrap:wrap;justify-content:flex-end}
+ .session-email{max-width:150px}
+ .auth-card{padding:22px}
+}
+@media print{
+ #authScreen,.account-actions{display:none!important}
+}
